@@ -54,10 +54,10 @@ namespace Project.Controllers
             }
 
         }
-    
+
         public ActionResult Login(Login user1)
         {
-            try
+            if(user1.phone_no != null && user1.password != null)
             {
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
@@ -67,6 +67,8 @@ namespace Project.Controllers
                     command.Parameters.AddWithValue("@phone_no", user1.phone_no);
                     command.Parameters.AddWithValue("@password", user1.password);
                     connection.Open();
+
+
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -76,20 +78,67 @@ namespace Project.Controllers
                     }
                     else
                     {
-                        ViewData["Message"] = "User Login Details Failed";
+
+                      ViewData["Message"] = "User Login Details Failed";
                     }
+
 
 
                 }
 
+
+
             }
-            catch
-            {
-                return View();
-            }
+           
+
+            return View();
 
         }
-            public ActionResult welcome()
+
+        //public ActionResult LoginCheck(Login user1)
+        //{
+        //    if (user1.phone_no != null && user1.password != null)
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(constring))
+        //        {
+        //            SqlCommand command = new SqlCommand("select [phone_no],[password] from [Students_New] where [phone_no]=@phone_no and [password]=@password", connection);
+
+
+        //            command.Parameters.AddWithValue("@phone_no", user1.phone_no);
+        //            command.Parameters.AddWithValue("@password", user1.password);
+        //            connection.Open();
+
+
+        //            SqlDataReader reader = command.ExecuteReader();
+
+        //            if (reader.HasRows)
+        //            {
+        //                Session["user_name"] = user1.phone_no.ToString();
+        //                return RedirectToAction("welcome");
+        //            }
+        //            else
+        //            {
+
+        //                Session["Message"] = "User Login Details Failed";
+        //            }
+
+                    
+
+        //        }
+              
+
+
+        //    }
+        //    return RedirectToAction("Login");
+        //}
+    
+
+             
+        
+
+
+
+            public ActionResult Welcome()
             {
                 return View();
             }
@@ -97,4 +146,7 @@ namespace Project.Controllers
         }
 
  }
+
+
+
 
