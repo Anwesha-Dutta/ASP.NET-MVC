@@ -1,10 +1,13 @@
 ﻿
+
 @{
     ViewBag.Title = "welcome";
 }
 
+<body style="background-color:aqua"
 @if (Session["user_name"] != null)
 {
-<h2>welcome @Session["user_name"].ToString()</h2>
+<h1>welcome @Session["user_name"].ToString()</h1>
 }
+</body>
 

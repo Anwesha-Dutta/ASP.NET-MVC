@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,7 @@ namespace Project.Controllers
 
     {
         string constring = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
-        // GET: Students_new
+      
         public ActionResult Index()
         {
             return View();
@@ -45,7 +46,7 @@ namespace Project.Controllers
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
 
             }
             catch
@@ -54,10 +55,10 @@ namespace Project.Controllers
             }
 
         }
-    
+
         public ActionResult Login(Login user1)
         {
-            try
+            if (user1.phone_no != null && user1.password != null)
             {
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
@@ -67,6 +68,8 @@ namespace Project.Controllers
                     command.Parameters.AddWithValue("@phone_no", user1.phone_no);
                     command.Parameters.AddWithValue("@password", user1.password);
                     connection.Open();
+
+
                     SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
@@ -76,25 +79,28 @@ namespace Project.Controllers
                     }
                     else
                     {
+
                         ViewData["Message"] = "User Login Details Failed";
                     }
 
 
+
                 }
 
-            }
-            catch
-            {
-                return View();
+
+
             }
 
-        }
-            public ActionResult welcome()
-            {
-                return View();
-            }
+
+            return View();
 
         }
 
- }
+        public ActionResult Welcome()
+        {
+            return View();
+        }
 
+    }
+
+}
