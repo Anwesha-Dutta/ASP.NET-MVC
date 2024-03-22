@@ -58,7 +58,11 @@ namespace Project.Controllers
 
         public ActionResult Login(Login user1)
         {
+<<<<<<< HEAD
             if (user1.phone_no != null && user1.password != null)
+=======
+            if(user1.phone_no != null && user1.password != null)
+>>>>>>> 6c19b576539608fb8a5833eefaef521dcf8c4019
             {
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
@@ -80,7 +84,11 @@ namespace Project.Controllers
                     else
                     {
 
+<<<<<<< HEAD
                         ViewData["Message"] = "User Login Details Failed";
+=======
+                      ViewData["Message"] = "User Login Details Failed";
+>>>>>>> 6c19b576539608fb8a5833eefaef521dcf8c4019
                     }
 
 
@@ -90,9 +98,65 @@ namespace Project.Controllers
 
 
             }
+<<<<<<< HEAD
 
 
             return View();
+=======
+           
+
+            return View();
+
+        }
+
+        //public ActionResult LoginCheck(Login user1)
+        //{
+        //    if (user1.phone_no != null && user1.password != null)
+        //    {
+        //        using (SqlConnection connection = new SqlConnection(constring))
+        //        {
+        //            SqlCommand command = new SqlCommand("select [phone_no],[password] from [Students_New] where [phone_no]=@phone_no and [password]=@password", connection);
+
+
+        //            command.Parameters.AddWithValue("@phone_no", user1.phone_no);
+        //            command.Parameters.AddWithValue("@password", user1.password);
+        //            connection.Open();
+
+
+        //            SqlDataReader reader = command.ExecuteReader();
+
+        //            if (reader.HasRows)
+        //            {
+        //                Session["user_name"] = user1.phone_no.ToString();
+        //                return RedirectToAction("welcome");
+        //            }
+        //            else
+        //            {
+
+        //                Session["Message"] = "User Login Details Failed";
+        //            }
+
+                    
+
+        //        }
+              
+
+
+        //    }
+        //    return RedirectToAction("Login");
+        //}
+    
+
+             
+        
+
+
+
+            public ActionResult Welcome()
+            {
+                return View();
+            }
+>>>>>>> 6c19b576539608fb8a5833eefaef521dcf8c4019
 
         }
 
@@ -101,6 +165,12 @@ namespace Project.Controllers
             return View();
         }
 
+<<<<<<< HEAD
     }
 
 }
+=======
+
+
+
+>>>>>>> 6c19b576539608fb8a5833eefaef521dcf8c4019

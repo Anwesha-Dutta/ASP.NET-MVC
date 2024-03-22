@@ -167,7 +167,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Students_new\Index.cshtml" />
     <Content Include="Views\Students_new\Registration.cshtml" />
-    <Content Include="Views\Students_new\welcome.cshtml" />
+    <Content Include="Views\Students_new\Welcome.cshtml" />
     <Content Include="Views\Students_new\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
